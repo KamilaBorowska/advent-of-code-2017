@@ -4,12 +4,15 @@ extern crate error_chain;
 #[macro_use]
 extern crate matches;
 
-use std::io;
+use std::io::{self, BufRead};
 
 error_chain! {
     errors {
         InvalidCharacter {
             description("invalid character found")
+        }
+        MissingInput {
+            description("missing input")
         }
     }
 
@@ -31,9 +34,9 @@ fn solve_captcha(input: &str) -> Result<u32> {
 }
 
 fn run() -> Result<()> {
-    let mut input = String::new();
-    io::stdin().read_line(&mut input)?;
-    println!("{}", solve_captcha(input.trim())?);
+    let stdin = io::stdin();
+    let input = stdin.lock().lines().next().ok_or_else(|| ErrorKind::MissingInput)??;
+    println!("{}", solve_captcha(&input)?);
     Ok(())
 }
 

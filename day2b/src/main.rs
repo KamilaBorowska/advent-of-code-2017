@@ -21,10 +21,8 @@ error_chain! {
 fn checksum<T: BufRead>(input: T) -> Result<u32> {
     let mut checksum = 0;
     'lines: for line in input.lines() {
-        let numbers: result::Result<Vec<u32>, _> = line?
-            .split_whitespace()
-            .map(str::parse::<u32>)
-            .collect();
+        let numbers: result::Result<Vec<u32>, _> =
+            line?.split_whitespace().map(str::parse::<u32>).collect();
         let numbers = numbers?;
         for (i, a) in numbers.iter().enumerate() {
             for (j, b) in numbers.iter().enumerate() {

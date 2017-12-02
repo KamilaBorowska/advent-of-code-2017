@@ -27,7 +27,7 @@ fn checksum<T: BufRead>(input: T) -> Result<u32> {
             .map(str::parse::<u32>)
             .minmax_by_key(|result| result.as_ref().ok().cloned())
             .into_option()
-            .ok_or_else(|| ErrorKind::EmptyLine)?;
+            .ok_or(ErrorKind::EmptyLine)?;
         checksum += max? - min?;
     }
     Ok(checksum)

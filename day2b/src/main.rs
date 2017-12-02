@@ -20,7 +20,7 @@ error_chain! {
 
 fn checksum<T: BufRead>(input: T) -> Result<u32> {
     let mut checksum = 0;
-    'lines: for line in input.lines() {
+    for line in input.lines() {
         let numbers: result::Result<Vec<u32>, _> =
             line?.split_whitespace().map(str::parse).collect();
         checksum += line_checksum(&numbers?)?;

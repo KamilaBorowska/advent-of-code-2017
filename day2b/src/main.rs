@@ -1,6 +1,8 @@
 #[macro_use]
 extern crate error_chain;
+extern crate itertools;
 
+use itertools::Itertools;
 use std::io::{self, BufRead};
 use std::num::ParseIntError;
 use std::result;
@@ -32,15 +34,9 @@ fn line_checksum(numbers: &[u32]) -> Result<u32> {
     numbers
         .iter()
         .enumerate()
-        .flat_map(|(i, a)| {
-            numbers
-                .iter()
-                .enumerate()
-                .filter(move |&(j, _)| i != j)
-                .map(move |(_, b)| (a, b))
-        })
-        .find(|&(a, b)| a % b == 0)
-        .map(|(a, b)| a / b)
+        .cartesian_product(numbers.iter().enumerate())
+        .find(|&((i, a), (j, b))| i != j && a % b == 0)
+        .map(|((_, a), (_, b))| a / b)
         .ok_or_else(|| ErrorKind::NoEvenlyDivisibleNumber.into())
 }
 

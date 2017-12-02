@@ -37,7 +37,7 @@ fn line_checksum(numbers: &[u32]) -> Result<u32> {
         }
     }
     bail!(ErrorKind::NoEvenlyDivisibleNumber);
-} 
+}
 
 fn run() -> Result<()> {
     let stdin = io::stdin();

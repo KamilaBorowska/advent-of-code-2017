@@ -29,14 +29,19 @@ fn checksum<T: BufRead>(input: T) -> Result<u32> {
 }
 
 fn line_checksum(numbers: &[u32]) -> Result<u32> {
-    for (i, a) in numbers.iter().enumerate() {
-        for (j, b) in numbers.iter().enumerate() {
-            if i != j && a % b == 0 {
-                return Ok(a / b);
-            }
-        }
-    }
-    bail!(ErrorKind::NoEvenlyDivisibleNumber);
+    numbers
+        .iter()
+        .enumerate()
+        .flat_map(|(i, a)| {
+            numbers
+                .iter()
+                .enumerate()
+                .filter(move |&(j, _)| i != j)
+                .map(move |(_, b)| (a, b))
+        })
+        .find(|&(a, b)| a % b == 0)
+        .map(|(a, b)| a / b)
+        .ok_or_else(|| ErrorKind::NoEvenlyDivisibleNumber.into())
 }
 
 fn run() -> Result<()> {

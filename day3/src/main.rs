@@ -1,5 +1,5 @@
-// <one line to give the program's name and a brief idea of what it does.>
-// Copyright (C) <year>  <name of author>
+// Day 3 solution for Advent of Code 2017
+// Copyright (C) 2017 Konrad Borowski
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

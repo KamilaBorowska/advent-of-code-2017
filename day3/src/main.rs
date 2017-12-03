@@ -12,8 +12,8 @@ error_chain! {
     }
 }
 
-// From http://cpansearch.perl.org/src/KRYDE/Math-PlanePath-124/lib/Math/PlanePath/SquareSpiral.pm,
-// GPLv3 or later
+// From Math::PlanePath::SquareSpiral CPAN module by
+// Kevin Ryde (http://user42.tuxfamily.org/), GPLv3 or later
 fn position(n: u32) -> (i32, i32) {
     let d = ((2 + (4 * n).integer_sqrt()) / 4) as i32;
     let n = n as i32 - (4 * d * d);

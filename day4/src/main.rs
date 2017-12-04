@@ -25,7 +25,7 @@ fn contains_no_duplicate_sorted_words(line: &str) -> bool {
     for word in line.split_whitespace() {
         let mut sorted_word: Vec<char> = word.chars().collect();
         sorted_word.sort();
-        if !words_so_far.insert(word) {
+        if !words_so_far.insert(sorted_word) {
             return false;
         }
     }

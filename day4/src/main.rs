@@ -2,6 +2,7 @@
 extern crate error_chain;
 
 use std::collections::HashSet;
+use std::hash::Hash;
 use std::io::{self, BufRead};
 
 error_chain! {
@@ -10,26 +11,30 @@ error_chain! {
     }
 }
 
-fn contains_no_duplicate_words(line: &str) -> bool {
+fn contains_no_duplicate<'a, F, T>(line: &'a str, mut f: F) -> bool
+where
+    F: FnMut(&'a str) -> T,
+    T: 'a + Hash + Eq,
+{
     let mut words_so_far = HashSet::new();
     for word in line.split_whitespace() {
-        if !words_so_far.insert(word) {
+        if !words_so_far.insert(f(word)) {
             return false;
         }
     }
     true
 }
 
+fn contains_no_duplicate_words(line: &str) -> bool {
+    contains_no_duplicate(line, |word| word)
+}
+
 fn contains_no_duplicate_sorted_words(line: &str) -> bool {
-    let mut words_so_far = HashSet::new();
-    for word in line.split_whitespace() {
+    contains_no_duplicate(line, |word| {
         let mut sorted_word: Vec<char> = word.chars().collect();
         sorted_word.sort();
-        if !words_so_far.insert(sorted_word) {
-            return false;
-        }
-    }
-    return true;
+        sorted_word
+    })
 }
 
 fn run() -> Result<()> {

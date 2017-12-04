@@ -39,12 +39,10 @@ fn position(n: u32) -> (i32, i32) {
         } else {
             (n - 3 * d, -d)
         }
+    } else if n >= -2 * d {
+        (-n - d, d)
     } else {
-        if n >= -2 * d {
-            (-n - d, d)
-        } else {
-            (d, n + 3 * d)
-        }
+        (d, n + 3 * d)
     }
 }
 

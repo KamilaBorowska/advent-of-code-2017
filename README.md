@@ -23,6 +23,9 @@ My solutions for [Advent of Code 2017] written in Rust.
     <td> <a href="https://adventofcode.com/2017/day/3">Day 3: Spiral Memory</a>
     <td> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day3/src/main.rs">Code, part one</a>
     <td> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day3b/src/main.rs">Code, part two</a>
+<tr>
+    <td> <a href="https://adventofcode.com/2017/day/4">Day 4: High-Entropy Passphrases</a>
+    <td colspan=2> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day3/src/main.rs">Code</a>
 </table>
 
 [Advent of Code 2017]: https://adventofcode.com/2017

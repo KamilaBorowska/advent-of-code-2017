@@ -19,16 +19,33 @@ fn contains_no_duplicate_words(line: &str) -> bool {
     }
     true
 }
-fn run() -> Result<()> {
-    let stdin = io::stdin();
-    let mut line_count = 1;
-    for line in stdin.lock().lines() {
-        let line = line?;
-        if !line.is_empty() && contains_no_duplicate_words(&line) {
-            line_count += 1;
+
+fn contains_no_duplicate_sorted_words(line: &str) -> bool {
+    let mut words_so_far = HashSet::new();
+    for word in line.split_whitespace() {
+        let mut sorted_word: Vec<char> = word.chars().collect();
+        sorted_word.sort();
+        if !words_so_far.insert(word) {
+            return false;
         }
     }
-    println!("{}", line_count);
+    return true;
+}
+
+fn run() -> Result<()> {
+    let stdin = io::stdin();
+    let mut no_duplicate_words = 0;
+    let mut no_duplicate_sorted_words = 0;
+    for line in stdin.lock().lines() {
+        let line = line?;
+        if contains_no_duplicate_words(&line) {
+            no_duplicate_words += 1;
+            if contains_no_duplicate_sorted_words(&line) {
+                no_duplicate_sorted_words += 1;
+            }
+        }
+    }
+    println!("{} {}", no_duplicate_words, no_duplicate_sorted_words);
     Ok(())
 }
 

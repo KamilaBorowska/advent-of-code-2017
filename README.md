@@ -26,6 +26,10 @@ My solutions for [Advent of Code 2017] written in Rust.
 <tr>
     <td> <a href="https://adventofcode.com/2017/day/4">Day 4: High-Entropy Passphrases</a>
     <td colspan=2> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day4/src/main.rs">Code</a>
+<tr>
+    <td> <a href="https://adventofcode.com/2017/day/5">Day 5: A Maze of Twisty Trampolines, All Alike</a>
+    <td> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day5/src/main.rs">Code, part one</a>
+    <td> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day5b/src/main.rs">Code, part two</a>
 </table>
 
 [Advent of Code 2017]: https://adventofcode.com/2017

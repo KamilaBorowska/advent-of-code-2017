@@ -18,11 +18,11 @@ error_chain! {
     }
 }
 
-fn solve_captcha(input: &str) -> Result<u32> {
+fn solve_captcha(input: &str, skip: usize) -> Result<u32> {
     input
         .chars()
         .cycle()
-        .skip(1)
+        .skip(skip)
         .zip(input.chars())
         .filter(|&(a, b)| a == b)
         .map(|(a, _)| a.to_digit(10))
@@ -30,10 +30,20 @@ fn solve_captcha(input: &str) -> Result<u32> {
         .ok_or_else(|| ErrorKind::InvalidCharacter.into())
 }
 
+fn solve_captcha_day1(input: &str) -> Result<u32> {
+    solve_captcha(input, 1)
+}
+
+fn solve_captcha_day2(input: &str) -> Result<u32> {
+    solve_captcha(input, input.len() / 2)
+}
+
 fn run() -> Result<()> {
     let mut input = String::new();
     io::stdin().read_line(&mut input)?;
-    println!("{}", solve_captcha(input.trim())?);
+    let input = input.trim();
+    println!("Day 1 solution: {}", solve_captcha_day1(input)?);
+    println!("Day 2 solution: {}", solve_captcha_day2(input)?);
     Ok(())
 }
 
@@ -41,24 +51,33 @@ quick_main!(run);
 
 #[cfg(test)]
 mod test {
-    use solve_captcha;
+    use {solve_captcha_day1, solve_captcha_day2};
 
-    fn test(input: &str, output: u32) {
-        assert_eq!(solve_captcha(input).unwrap(), output);
+    fn test(input: &str, day1: u32, day2: u32) {
+        assert_eq!(solve_captcha_day1(input).unwrap(), day1, "day1({})", input);
+        assert_eq!(solve_captcha_day2(input).unwrap(), day2, "day2({})", input);
     }
 
     #[test]
     fn test_captcha_solving() {
-        test("1122", 3);
-        test("1111", 4);
-        test("1234", 0);
-        test("91212129", 9);
-        test("", 0);
+        test("1122", 3, 0);
+        test("1212", 0, 6);
+        test("1221", 3, 0);
+        test("1111", 4, 4);
+        test("1234", 0, 0);
+        test("123425", 0, 4);
+        test("123123", 0, 12);
+        test("12131415", 0, 4);
+        test("91212129", 9, 6);
+        test("", 0, 0);
     }
 
     #[test]
     fn test_failed_captcha_solving() {
         use ErrorKind::InvalidCharacter;
-        assert_matches!(solve_captcha("a").unwrap_err().kind(), &InvalidCharacter);
+        assert_matches!(
+            solve_captcha_day1("a").unwrap_err().kind(),
+            &InvalidCharacter
+        );
     }
 }

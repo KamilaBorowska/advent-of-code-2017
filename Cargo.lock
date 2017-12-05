@@ -40,14 +40,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "day1b"
-version = "0.1.0"
-dependencies = [
- "error-chain 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "matches 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
 name = "day2"
 version = "0.1.0"
 dependencies = [

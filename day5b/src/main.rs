@@ -17,7 +17,7 @@ fn run() -> Result<()> {
         .lock()
         .lines()
         .map(|line| Ok(line?.parse()?))
-        .collect::<Result<Vec<i32>>>()?;
+        .collect::<Result<Vec<isize>>>()?;
     let mut pc = 0;
     let mut steps = 0;
     while let Some(add_pc) = jumps.get_mut(pc as usize) {

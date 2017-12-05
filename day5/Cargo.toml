@@ -1,0 +1,7 @@
+[package]
+name = "day5"
+version = "0.1.0"
+authors = ["Konrad Borowski <konrad@borowski.pw>"]
+
+[dependencies]
+error-chain = "0.11.0"

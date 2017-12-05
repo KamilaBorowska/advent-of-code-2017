@@ -17,12 +17,8 @@ where
     T: 'a + Hash + Eq,
 {
     let mut words_so_far = HashSet::new();
-    for word in line.split_whitespace() {
-        if !words_so_far.insert(f(word)) {
-            return false;
-        }
-    }
-    true
+    line.split_whitespace()
+        .all(|word| words_so_far.insert(f(word)))
 }
 
 fn contains_no_duplicate_words(line: &str) -> bool {

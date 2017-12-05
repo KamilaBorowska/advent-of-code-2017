@@ -30,11 +30,11 @@ fn solve_captcha(input: &str, skip: usize) -> Result<u32> {
         .ok_or_else(|| ErrorKind::InvalidCharacter.into())
 }
 
-fn solve_captcha_day1(input: &str) -> Result<u32> {
+fn solve_captcha_part1(input: &str) -> Result<u32> {
     solve_captcha(input, 1)
 }
 
-fn solve_captcha_day2(input: &str) -> Result<u32> {
+fn solve_captcha_part2(input: &str) -> Result<u32> {
     solve_captcha(input, input.len() / 2)
 }
 
@@ -42,8 +42,8 @@ fn run() -> Result<()> {
     let mut input = String::new();
     io::stdin().read_line(&mut input)?;
     let input = input.trim();
-    println!("Day 1 solution: {}", solve_captcha_day1(input)?);
-    println!("Day 2 solution: {}", solve_captcha_day2(input)?);
+    println!("Day 1 solution: {}", solve_captcha_part1(input)?);
+    println!("Day 2 solution: {}", solve_captcha_part2(input)?);
     Ok(())
 }
 
@@ -51,11 +51,11 @@ quick_main!(run);
 
 #[cfg(test)]
 mod test {
-    use {solve_captcha_day1, solve_captcha_day2};
+    use {solve_captcha_part1, solve_captcha_part2};
 
     fn test(input: &str, day1: u32, day2: u32) {
-        assert_eq!(solve_captcha_day1(input).unwrap(), day1, "day1({})", input);
-        assert_eq!(solve_captcha_day2(input).unwrap(), day2, "day2({})", input);
+        assert_eq!(solve_captcha_part1(input).unwrap(), day1, "day1({})", input);
+        assert_eq!(solve_captcha_part2(input).unwrap(), day2, "day2({})", input);
     }
 
     #[test]
@@ -76,7 +76,7 @@ mod test {
     fn test_failed_captcha_solving() {
         use ErrorKind::InvalidCharacter;
         assert_matches!(
-            solve_captcha_day1("a").unwrap_err().kind(),
+            solve_captcha_part1("a").unwrap_err().kind(),
             &InvalidCharacter
         );
     }

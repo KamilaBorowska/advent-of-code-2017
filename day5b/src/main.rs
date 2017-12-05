@@ -13,7 +13,7 @@ error_chain! {
 
 fn run() -> Result<()> {
     let stdin = io::stdin();
-    let mut jumps: Vec<i32> = stdin
+    let mut jumps = stdin
         .lock()
         .lines()
         .map(|line| Ok(line?.parse()?))

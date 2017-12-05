@@ -19,7 +19,7 @@ fn run() -> Result<()> {
         .map(|line| Ok(line?.parse()?))
         .collect::<Result<Vec<isize>>>()?;
     let mut pc = 0;
-    let mut steps = 0;
+    let mut steps = 0u64;
     while let Some(add_pc) = jumps.get_mut(pc as usize) {
         pc += *add_pc;
         *add_pc += if *add_pc >= 3 { -1 } else { 1 };

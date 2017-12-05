@@ -22,11 +22,7 @@ fn run() -> Result<()> {
     let mut steps = 0;
     while let Some(add_pc) = jumps.get_mut(pc as usize) {
         pc += *add_pc;
-        *add_pc += if *add_pc >= 3 {
-            -1
-        } else {
-            1
-        };
+        *add_pc += if *add_pc >= 3 { -1 } else { 1 };
         steps += 1;
     }
     println!("{}", steps);

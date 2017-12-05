@@ -4,11 +4,11 @@
 
 My solutions for [Advent of Code 2017] written in Rust.
 
-## Challenges
+## Puzzles
 
 <table>
 <tr>
-    <th> Challenge
+    <th> Puzzle
     <th> Code, part one
     <th> Code, part two
 <tr>

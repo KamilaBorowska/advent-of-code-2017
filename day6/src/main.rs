@@ -51,8 +51,8 @@ fn run() -> Result<()> {
         .split_whitespace()
         .map(|number| Ok(number.parse()?))
         .collect::<Result<Vec<u8>>>()?;
-    println!("Day 1: {}", redistribute_memory(blocks));
-    println!("Day 2: {}", redistribute_memory(blocks));
+    println!("Part 1: {}", redistribute_memory(blocks));
+    println!("Part 2: {}", redistribute_memory(blocks));
     Ok(())
 }
 

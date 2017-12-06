@@ -5,3 +5,4 @@ authors = ["Konrad Borowski <konrad@borowski.pw>"]
 
 [dependencies]
 error-chain = "0.11.0"
+revord = "0.0.2"

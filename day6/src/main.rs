@@ -1,6 +1,8 @@
 #[macro_use]
 extern crate error_chain;
+extern crate revord;
 
+use revord::RevOrd;
 use std::collections::HashSet;
 use std::io::{self, Read};
 use std::num::ParseIntError;
@@ -26,7 +28,7 @@ fn redistribute_memory(memory: &mut [u8]) -> usize {
             let (index, block) = memory
                 .iter_mut()
                 .enumerate()
-                .max_by_key(|&(index, &mut block)| (block, !index))
+                .max_by_key(|&(index, &mut block)| (block, RevOrd(index)))
                 .unwrap();
             start_with = index + 1;
             iterations = *block;

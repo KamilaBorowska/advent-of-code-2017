@@ -47,12 +47,12 @@ fn redistribute_memory(memory: &mut [u8]) -> usize {
 fn run() -> Result<()> {
     let mut input = Vec::new();
     io::stdin().read_to_end(&mut input)?;
-    let mut blocks = str::from_utf8(&input)?
+    let blocks = &mut str::from_utf8(&input)?
         .split_whitespace()
         .map(|number| Ok(number.parse()?))
         .collect::<Result<Vec<u8>>>()?;
-    println!("Day 1: {}", redistribute_memory(&mut blocks));
-    println!("Day 2: {}", redistribute_memory(&mut blocks));
+    println!("Day 1: {}", redistribute_memory(blocks));
+    println!("Day 2: {}", redistribute_memory(blocks));
     Ok(())
 }
 

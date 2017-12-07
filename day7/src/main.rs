@@ -15,12 +15,6 @@ error_chain! {
         InvalidFormat {
             description("input format doesn't match expected")
         }
-        NotEnoughParts {
-            description("at least 3 links are required to find unbalanced element")
-        }
-        NoUnbalancedElement {
-            description("there is no unbalanced element")
-        }
     }
 
     foreign_links {

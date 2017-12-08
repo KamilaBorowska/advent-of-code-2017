@@ -35,6 +35,9 @@ My solutions for [Advent of Code 2017] written in Rust.
     <td> <a href="https://adventofcode.com/2017/day/7">Day 7: Recursive Circus</a>
     <td> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day7/src/main.rs">Code, part one</a>
     <td> Currently not available
+<tr>
+    <td> <a href="https://adventofcode.com/2017/day/8">Day 8: I Heard You Like Registers</a>
+    <td colspan=2> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day8/src/main.rs">Code</a>
 </table>
 
 [Advent of Code 2017]: https://adventofcode.com/2017

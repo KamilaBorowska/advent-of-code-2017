@@ -103,7 +103,10 @@ named!(instruction<&str, Instruction>, ws!(do_parse!(
 
 named!(identifier<&str, &str>, take_while1_s!(char::is_alphabetic));
 
-named!(integer<&str, i32>,  map_res!(take_while1_s!(|c| c == '-' || char::is_digit(c, 10)), str::parse));
+named!(integer<&str, i32>, map_res!(
+    take_while1_s!(|c| c == '-' || char::is_digit(c, 10)),
+    str::parse
+));
 
 error_chain! {
     errors {

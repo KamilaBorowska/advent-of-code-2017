@@ -3,6 +3,7 @@ extern crate error_chain;
 #[macro_use]
 extern crate nom;
 
+use std::cmp;
 use std::collections::HashMap;
 use std::io::{self, Read};
 use std::str::{self, Utf8Error};
@@ -24,6 +25,7 @@ impl<'a> Instruction<'a> {
         ) {
             self.direction
                 .change(variables.map.entry(self.variable).or_insert(0), self.change);
+            variables.max_so_far = cmp::max(variables.max_so_far, variables.map[self.variable]);
         }
     }
 }
@@ -69,6 +71,7 @@ impl Operator {
 #[derive(Default)]
 struct Variables<'a> {
     map: HashMap<&'a str, i32>,
+    max_so_far: i32,
 }
 
 impl<'a> Variables<'a> {
@@ -129,6 +132,7 @@ fn run() -> Result<()> {
         "Part 1: {}",
         variables.map.values().max().cloned().unwrap_or(0)
     );
+    println!("Part 2: {}", variables.max_so_far);
     Ok(())
 }
 

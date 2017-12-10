@@ -34,10 +34,33 @@ fn part_one(line: &str) -> Result<u32> {
     Ok(u32::from(array[0]) * u32::from(array[1]))
 }
 
+fn part_two(input: &[u8]) -> [u8; 16] {
+    let mut array = enum_map! { i => i };
+    let mut current_position = Wrapping(0);
+    let mut skip = Wrapping(0);
+    for _round in 0..64 {
+        for &byte in input.iter().chain(&[17, 31, 73, 47, 23]) {
+            reverse(&mut array, current_position.0, byte);
+            current_position += Wrapping(byte) + skip;
+            skip += Wrapping(1);
+        }
+    }
+    let mut output = [0; 16];
+    for (chunk, out) in array.as_slice().chunks(16).zip(&mut output) {
+        *out = chunk.iter().fold(0, |a, b| a ^ b);
+    }
+    output
+}
+
 fn run() -> Result<()> {
     let mut line = String::new();
     io::stdin().read_line(&mut line)?;
     println!("Part 1: {}", part_one(line.trim())?);
+    print!("Part 2: ");
+    for byte in &part_two(line.trim().as_bytes()) {
+        print!("{:02x}", byte);
+    }
+    println!();
     Ok(())
 }
 

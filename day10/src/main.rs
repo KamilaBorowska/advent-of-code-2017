@@ -55,9 +55,10 @@ fn part_two(input: &[u8]) -> [u8; 16] {
 fn run() -> Result<()> {
     let mut line = String::new();
     io::stdin().read_line(&mut line)?;
-    println!("Part 1: {}", part_one(line.trim())?);
+    let line = line.trim();
+    println!("Part 1: {}", part_one(line)?);
     print!("Part 2: ");
-    for byte in &part_two(line.trim().as_bytes()) {
+    for byte in &part_two(line.as_bytes()) {
         print!("{:02x}", byte);
     }
     println!();

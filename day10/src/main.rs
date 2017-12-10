@@ -21,19 +21,23 @@ fn reverse(map: &mut EnumMap<u8, u8>, start: u8, length: u8) {
     }
 }
 
-fn run() -> Result<()> {
-    let mut line = String::new();
-    io::stdin().read_line(&mut line)?;
+fn part_one(line: &str) -> Result<u32> {
     let mut array = enum_map! { i => i };
     let mut current_position = Wrapping(0);
     let mut skip = Wrapping(0);
-    for length in line.trim().split(',') {
+    for length in line.split(',') {
         let length = length.parse()?;
         reverse(&mut array, current_position.0, length);
         current_position += Wrapping(length) + skip;
         skip += Wrapping(1);
     }
-    println!("Part 1: {}", u32::from(array[0]) * u32::from(array[1]));
+    Ok(u32::from(array[0]) * u32::from(array[1]))
+}
+
+fn run() -> Result<()> {
+    let mut line = String::new();
+    io::stdin().read_line(&mut line)?;
+    println!("Part 1: {}", part_one(line.trim())?);
     Ok(())
 }
 

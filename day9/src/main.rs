@@ -14,7 +14,11 @@ enum Group<'a> {
 impl<'a> Group<'a> {
     fn score(&self, current_score: u32) -> u32 {
         if let Group::Braces(ref groups) = *self {
-            current_score + groups.iter().map(|group| group.score(current_score + 1)).sum::<u32>()
+            current_score
+                + groups
+                    .iter()
+                    .map(|group| group.score(current_score + 1))
+                    .sum::<u32>()
         } else {
             0
         }
@@ -39,9 +43,22 @@ impl<'a> Group<'a> {
     }
 }
 
-named!(group<Group>, alt!(map!(braces, Group::Braces) | map!(garbage, Group::Garbage)));
-named!(braces<Vec<Group>>, delimited!(tag!("{"), separated_list!(tag!(","), group), tag!("}")));
-named!(garbage, delimited!(tag!("<"), escaped!(none_of!(">!"), '!', nom::anychar), tag!(">")));
+named!(
+    group<Group>,
+    alt!(map!(braces, Group::Braces) | map!(garbage, Group::Garbage))
+);
+named!(
+    braces<Vec<Group>>,
+    delimited!(tag!("{"), separated_list!(tag!(","), group), tag!("}"))
+);
+named!(
+    garbage,
+    delimited!(
+        tag!("<"),
+        escaped!(none_of!(">!"), '!', nom::anychar),
+        tag!(">")
+    )
+);
 
 error_chain! {
     errors {
@@ -58,7 +75,9 @@ error_chain! {
 fn run() -> Result<()> {
     let mut input = Vec::new();
     io::stdin().read_to_end(&mut input)?;
-    let group = group(&input).to_result().map_err(|_| ErrorKind::InvalidFormat)?;
+    let group = group(&input)
+        .to_result()
+        .map_err(|_| ErrorKind::InvalidFormat)?;
     println!("Part 1: {}", group.score(1));
     println!("Part 2: {}", group.non_cancelled_characters());
     Ok(())
@@ -83,7 +102,10 @@ mod test {
         assert_eq!(braces(b"{}"), Done("".as_bytes(), Vec::new()));
         assert_eq!(
             braces(b"{<a>,{}}"),
-            Done("".as_bytes(), vec![Group::Garbage(b"a"), Group::Braces(Vec::new())])
+            Done(
+                "".as_bytes(),
+                vec![Group::Garbage(b"a"), Group::Braces(Vec::new())]
+            )
         );
     }
 }

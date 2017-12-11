@@ -1,0 +1,8 @@
+[package]
+name = "day11"
+version = "0.1.0"
+authors = ["Konrad Borowski <konrad@borowski.pw>"]
+
+[dependencies]
+hex2d = "0.1.0"
+error-chain = "0.11.0"

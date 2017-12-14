@@ -53,6 +53,9 @@ My solutions for [Advent of Code 2017] written in Rust.
 <tr>
     <td> <a href="https://adventofcode.com/2017/day/13">Day 13: Packet Scanners</a>
     <td colspan=2> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day13/src/main.rs">Code</a>
+<tr>
+    <td> <a href="https://adventofcode.com/2017/day/14">Day 14: Disk Defragmentation</a>
+    <td colspan=2> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day14/src/main.rs">Code</a>
 </table>
 
 [Advent of Code 2017]: https://adventofcode.com/2017

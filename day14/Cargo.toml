@@ -1,0 +1,9 @@
+[package]
+name = "day14"
+version = "0.1.0"
+authors = ["Konrad Borowski <konrad@borowski.pw>"]
+
+[dependencies]
+enum-map = "0.2.23"
+error-chain = "0.11.0"
+if_chain = "0.1.2"

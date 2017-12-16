@@ -59,6 +59,9 @@ My solutions for [Advent of Code 2017] written in Rust.
 <tr>
     <td> <a href="https://adventofcode.com/2017/day/15">Day 15: Dueling Generators</a>
     <td colspan=2> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day15/src/main.rs">Code</a>
+<tr>
+    <td> <a href="https://adventofcode.com/2017/day/16">Day 16: Permutation Promenade</a>
+    <td colspan=2> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day16/src/main.rs">Code</a>
 </table>
 
 [Advent of Code 2017]: https://adventofcode.com/2017

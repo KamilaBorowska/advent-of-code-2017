@@ -37,10 +37,12 @@ named!(
 named!(
     pipe<Pipe>,
     ws!(do_parse!(
-        identifier: integer >>
-        tag!("<->") >>
-        connected_to: separated_nonempty_list_complete!(tag!(","), ws!(integer)) >>
-        (Pipe { identifier, connected_to })
+        identifier: integer >> tag!("<->")
+            >> connected_to: separated_nonempty_list_complete!(tag!(","), ws!(integer))
+            >> (Pipe {
+                identifier,
+                connected_to,
+            })
     ))
 );
 

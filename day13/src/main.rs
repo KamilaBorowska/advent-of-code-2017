@@ -59,9 +59,9 @@ fn severity(firewalls: &[Firewall]) -> u32 {
 }
 
 fn is_caught(firewalls: &[Firewall], delay: u32) -> bool {
-    firewalls.iter().any(|firewall| {
-        (firewall.depth + delay) % firewall.cycle_length() == 0
-    })
+    firewalls
+        .iter()
+        .any(|firewall| (firewall.depth + delay) % firewall.cycle_length() == 0)
 }
 
 fn run() -> Result<()> {

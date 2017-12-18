@@ -5,7 +5,7 @@ extern crate error_chain;
 #[macro_use]
 extern crate nom;
 
-use nom::{be_u8, digit};
+use nom::{digit, be_u8};
 use std::io::{self, Read};
 use std::str;
 
@@ -33,25 +33,31 @@ enum Command {
 named!(commands<Vec<Command>>, separated_list!(tag!(","), command));
 named!(command<Command>, alt!(spin | exchange | partner));
 
-named!(spin<Command>, map!(preceded!(tag!("s"), integer), Command::Spin));
+named!(
+    spin<Command>,
+    map!(preceded!(tag!("s"), integer), Command::Spin)
+);
 
-named!(exchange<Command>, do_parse!(
-    tag!("x") >>
-    first: integer >>
-    tag!("/") >>
-    second: integer >>
-    (Command::Exchange(first, second))
-));
+named!(
+    exchange<Command>,
+    do_parse!(
+        tag!("x") >> first: integer >> tag!("/") >> second: integer
+            >> (Command::Exchange(first, second))
+    )
+);
 
-named!(partner<Command>, do_parse!(
-    tag!("p") >>
-    first: be_u8 >>
-    tag!("/") >>
-    second: be_u8 >>
-    (Command::Partner(first, second))
-));
+named!(
+    partner<Command>,
+    do_parse!(
+        tag!("p") >> first: be_u8 >> tag!("/") >> second: be_u8
+            >> (Command::Partner(first, second))
+    )
+);
 
-named!(integer<u8>, map_res!(map_res!(digit, str::from_utf8), str::parse));
+named!(
+    integer<u8>,
+    map_res!(map_res!(digit, str::from_utf8), str::parse)
+);
 
 // slice rotation is not stable
 fn rotate<T>(slice: &mut [T], skip: usize) {
@@ -75,7 +81,9 @@ fn run() -> Result<()> {
     let mut dancing = array![|i| b'a' + i as u8; 16];
     let mut input = Vec::new();
     io::stdin().read_to_end(&mut input)?;
-    let commands = commands(&input).to_result().map_err(|_| ErrorKind::InvalidFormat)?;
+    let commands = commands(&input)
+        .to_result()
+        .map_err(|_| ErrorKind::InvalidFormat)?;
     for i in 0..ITERATIONS {
         for command in &commands {
             match *command {

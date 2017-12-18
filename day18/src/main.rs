@@ -167,9 +167,7 @@ fn part1(instructions: &[Opcode]) -> i64 {
     loop {
         match interpreter.step() {
             Command::Send(value) => last_sound = value,
-            Command::Receive(_) => if last_sound != 0 {
-                return last_sound;
-            },
+            Command::Receive(_) if last_sound != 0 => return last_sound,
             Command::Eof => return 0,
             _ => {}
         }

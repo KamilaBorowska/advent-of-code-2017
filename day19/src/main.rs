@@ -89,6 +89,8 @@ mod test {
      |  |  |  D 
      +B-+  +--+ 
 ";
-        assert_eq!(find_letters(maze), b"ABCDEF");
+        let (result, steps) = find_letters(maze);
+        assert_eq!(result, b"ABCDEF");
+        assert_eq!(steps, 38);
     }
 }

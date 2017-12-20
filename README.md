@@ -71,6 +71,9 @@ My solutions for [Advent of Code 2017] written in Rust.
 <tr>
     <td> <a href="https://adventofcode.com/2017/day/19">Day 19: A Series of Tubes</a>
     <td colspan=2> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day19/src/main.rs">Code</a>
+<tr>
+    <td> <a href="https://adventofcode.com/2017/day/20">Day 20: Particle Swarm</a>
+    <td colspan=2> <a href="https://github.com/xfix/advent-of-code-2017/blob/master/day20/src/main.rs">Code</a>
 </table>
 
 [Advent of Code 2017]: https://adventofcode.com/2017

@@ -22,8 +22,11 @@ error_chain! {
 named!(
     generators<(Generator, Generator)>,
     do_parse!(
-        tag!("Generator A starts with ") >> a: integer >> line_ending
-            >> tag!("Generator B starts with ") >> b: integer
+        tag!("Generator A starts with ")
+            >> a: integer
+            >> line_ending
+            >> tag!("Generator B starts with ")
+            >> b: integer
             >> (
                 Generator {
                     current: a,

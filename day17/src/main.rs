@@ -3,11 +3,13 @@ extern crate itertools;
 use std::cmp::Ordering;
 
 // Workaround for conservative_impl_trait not being stable
-macro_rules! positions { ($input:expr) => {
-    itertools::iterate((0, 0), |&(i, current_position)| {
-        (i + 1, (current_position + $input + 1) % (i + 1))
-    })
-}}
+macro_rules! positions {
+    ($input:expr) => {
+        itertools::iterate((0, 0), |&(i, current_position)| {
+            (i + 1, (current_position + $input + 1) % (i + 1))
+        })
+    };
+}
 
 fn find_item(steps: usize, after: usize, input: usize) -> usize {
     assert!(steps >= after);

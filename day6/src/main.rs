@@ -70,5 +70,4 @@ mod test {
         assert_eq!(redistribute_memory(&mut input), 5);
         assert_eq!(input, [2, 4, 1, 2]);
     }
-
 }

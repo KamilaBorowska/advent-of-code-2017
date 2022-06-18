@@ -21,7 +21,8 @@ impl<'a> Grid<'a> {
         let width = input
             .iter()
             .position(|&ch| ch == b'\n')
-            .unwrap_or(input.len()) + 1;
+            .unwrap_or(input.len())
+            + 1;
         let direction = Complex::new(0, 1);
         Grid {
             input,

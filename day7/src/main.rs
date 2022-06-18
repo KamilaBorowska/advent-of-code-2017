@@ -65,8 +65,8 @@ quick_main!(run);
 
 #[cfg(test)]
 mod test {
-    use {identifier, integer, line, Line};
     use nom::IResult;
+    use {identifier, integer, line, Line};
 
     #[test]
     fn test_identifier() {

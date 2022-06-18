@@ -2,7 +2,7 @@
 name = "day14"
 version = "0.1.0"
 authors = ["Konrad Borowski <konrad@borowski.pw>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 enum-map = "2.0.2"

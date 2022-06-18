@@ -2,7 +2,7 @@
 name = "day19"
 version = "0.1.0"
 authors = ["Konrad Borowski <konrad@borowski.pw>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 num-complex = "0.4.2"

@@ -4,9 +4,9 @@ version = 3
 
 [[package]]
 name = "array-macro"
-version = "1.0.0"
+version = "2.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ef56fe44361f5368f5fd663e195b722647b78711f1658d03d1a249dfab93e987"
+checksum = "d7dcc5a412440417e539ac67c51a609414e191f2558f2ad53e4610ee36fad8a3"
 
 [[package]]
 name = "backtrace"

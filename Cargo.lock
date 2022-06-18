@@ -4,9 +4,9 @@ version = 3
 
 [[package]]
 name = "array-macro"
-version = "1.0.0"
+version = "2.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ef56fe44361f5368f5fd663e195b722647b78711f1658d03d1a249dfab93e987"
+checksum = "457661fa6716c30b73d7c41400a8a78780d20523b83a9441dabec28e93f27cf4"
 
 [[package]]
 name = "autocfg"

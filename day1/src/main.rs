@@ -51,7 +51,7 @@ quick_main!(run);
 
 #[cfg(test)]
 mod test {
-    use {solve_captcha_part1, solve_captcha_part2};
+    use crate::{solve_captcha_part1, solve_captcha_part2};
 
     fn test(input: &str, day1: u32, day2: u32) {
         assert_eq!(solve_captcha_part1(input).unwrap(), day1, "day1({})", input);
@@ -74,7 +74,7 @@ mod test {
 
     #[test]
     fn test_failed_captcha_solving() {
-        use ErrorKind::InvalidCharacter;
+        use crate::ErrorKind::InvalidCharacter;
         assert_matches!(
             solve_captcha_part1("a").unwrap_err().kind(),
             &InvalidCharacter

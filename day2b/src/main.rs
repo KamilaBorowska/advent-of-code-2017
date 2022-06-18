@@ -50,7 +50,7 @@ quick_main!(run);
 
 #[cfg(test)]
 mod test {
-    use checksum;
+    use crate::checksum;
 
     #[test]
     fn test_checksum() {

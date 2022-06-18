@@ -18,7 +18,7 @@ error_chain! {
 }
 
 fn name_to_direction(name: &str) -> Option<Direction> {
-    use Direction::*;
+    use crate::Direction::*;
     Some(match name {
         "n" => YZ,
         "ne" => XZ,

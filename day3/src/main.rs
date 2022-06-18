@@ -62,7 +62,7 @@ quick_main!(run);
 
 #[cfg(test)]
 mod test {
-    use steps;
+    use crate::steps;
 
     #[test]
     fn test_steps() {

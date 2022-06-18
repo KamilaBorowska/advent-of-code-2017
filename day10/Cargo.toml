@@ -2,6 +2,7 @@
 name = "day10"
 version = "0.1.0"
 authors = ["xfix"]
+edition = "2021"
 
 [dependencies]
 enum-map = "2.0.2"

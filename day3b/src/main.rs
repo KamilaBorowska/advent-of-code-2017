@@ -94,7 +94,7 @@ quick_main!(run);
 
 #[cfg(test)]
 mod test {
-    use Square;
+    use crate::Square;
 
     #[test]
     fn test_square() {

@@ -82,7 +82,7 @@ fn main() {
 mod test {
     #[test]
     fn maze() {
-        use find_letters;
+        use crate::find_letters;
         let maze = b"     |          
      |  +--+    
      A  |  C    

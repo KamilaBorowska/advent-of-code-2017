@@ -55,8 +55,7 @@ checksum = "d4c819a1287eb618df47cc647173c5c4c66ba19d888a6e50d605672aed3140de"
 name = "day1"
 version = "0.1.0"
 dependencies = [
- "error-chain",
- "matches",
+ "thiserror",
 ]
 
 [[package]]
@@ -318,12 +317,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "36fbc8a8929c632868295d0178dd8f63fc423fd7537ad0738372bd010b3ac9b0"
 
 [[package]]
-name = "matches"
-version = "0.1.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "100aabe6b8ff4e4a7e32c1c13523379802df0772b82466207ac25b013f193376"
-
-[[package]]
 name = "memchr"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -473,6 +466,26 @@ dependencies = [
  "proc-macro2",
  "quote",
  "unicode-ident",
+]
+
+[[package]]
+name = "thiserror"
+version = "1.0.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd829fe32373d27f76265620b5309d0340cb8550f523c1dda251d6298069069a"
+dependencies = [
+ "thiserror-impl",
+]
+
+[[package]]
+name = "thiserror-impl"
+version = "1.0.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0396bc89e626244658bef819e22d0cc459e795a5ebe878e6ec336d1674a8d79a"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]

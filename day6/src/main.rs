@@ -62,7 +62,7 @@ quick_main!(run);
 
 #[cfg(test)]
 mod test {
-    use redistribute_memory;
+    use crate::redistribute_memory;
 
     #[test]
     fn test_redistribution() {

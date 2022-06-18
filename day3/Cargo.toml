@@ -3,6 +3,7 @@ name = "day3"
 version = "0.1.0"
 authors = ["Konrad Borowski <konrad@borowski.pw>"]
 license = "GPLv3+"
+edition = "2018"
 
 [dependencies]
 error-chain = "0.11.0"

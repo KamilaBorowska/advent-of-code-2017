@@ -54,7 +54,7 @@ quick_main!(run);
 
 #[cfg(test)]
 mod test {
-    use contains_no_duplicate_words;
+    use crate::contains_no_duplicate_words;
 
     #[test]
     fn test_basic_examples() {

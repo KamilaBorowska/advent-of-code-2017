@@ -68,7 +68,7 @@ fn flood_fill(input: &mut [[u8; 16]; 128], x: usize, y: usize) -> bool {
 fn run() -> Result<()> {
     let mut input = String::new();
     io::stdin().read_line(&mut input)?;
-    let new_len = input.trim_right().len();
+    let new_len = input.trim_end().len();
     input.truncate(new_len);
     input += "-";
     let len_to_dash = input.len();

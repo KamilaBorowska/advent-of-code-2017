@@ -84,7 +84,7 @@ fn run() -> Result<()> {
     const ITERATIONS: usize = 1_000_000_000;
 
     let mut sequences = Vec::new();
-    let mut dancing = array![|i| b'a' + i as u8; 16];
+    let mut dancing = array![i => b'a' + i as u8; 16];
     let mut input = Vec::new();
     io::stdin().read_to_end(&mut input)?;
     let commands = commands(&input)

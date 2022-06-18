@@ -5,4 +5,4 @@ authors = ["Konrad Borowski <konrad@borowski.pw>"]
 
 [dependencies]
 error-chain = "0.11.0"
-num-complex = "0.1.41"
+num-complex = "0.4.2"

@@ -4,4 +4,4 @@ version = "0.1.0"
 authors = ["Konrad Borowski <konrad@borowski.pw>"]
 
 [dependencies]
-num-complex = "0.1.41"
+num-complex = "0.4.2"

@@ -1,24 +1,19 @@
-#[macro_use]
-extern crate error_chain;
-#[cfg(test)]
-#[macro_use]
-extern crate matches;
-
 use std::io;
+use thiserror::Error;
 
-error_chain! {
-    errors {
-        InvalidCharacter {
-            description("invalid character found")
-        }
-    }
-
-    foreign_links {
-        Io(io::Error);
-    }
+#[derive(Error, Debug)]
+enum Error {
+    #[error("invalid character found")]
+    InvalidCharacter,
+    #[error("IO error: {0}")]
+    Io(
+        #[from]
+        #[source]
+        io::Error,
+    ),
 }
 
-fn solve_captcha(input: &str, skip: usize) -> Result<u32> {
+fn solve_captcha(input: &str, skip: usize) -> Result<u32, Error> {
     input
         .chars()
         .cycle()
@@ -27,18 +22,18 @@ fn solve_captcha(input: &str, skip: usize) -> Result<u32> {
         .filter(|&(a, b)| a == b)
         .map(|(a, _)| a.to_digit(10))
         .fold(Some(0), |a, b| Some(a? + b?))
-        .ok_or_else(|| ErrorKind::InvalidCharacter.into())
+        .ok_or(Error::InvalidCharacter)
 }
 
-fn solve_captcha_part1(input: &str) -> Result<u32> {
+fn solve_captcha_part1(input: &str) -> Result<u32, Error> {
     solve_captcha(input, 1)
 }
 
-fn solve_captcha_part2(input: &str) -> Result<u32> {
+fn solve_captcha_part2(input: &str) -> Result<u32, Error> {
     solve_captcha(input, input.len() / 2)
 }
 
-fn run() -> Result<()> {
+fn main() -> Result<(), Error> {
     let mut input = String::new();
     io::stdin().read_line(&mut input)?;
     let input = input.trim();
@@ -46,8 +41,6 @@ fn run() -> Result<()> {
     println!("Day 2 solution: {}", solve_captcha_part2(input)?);
     Ok(())
 }
-
-quick_main!(run);
 
 #[cfg(test)]
 mod test {
@@ -74,10 +67,9 @@ mod test {
 
     #[test]
     fn test_failed_captcha_solving() {
-        use crate::ErrorKind::InvalidCharacter;
-        assert_matches!(
-            solve_captcha_part1("a").unwrap_err().kind(),
-            &InvalidCharacter
-        );
+        assert!(matches!(
+            solve_captcha_part1("a"),
+            Err(crate::Error::InvalidCharacter),
+        ));
     }
 }

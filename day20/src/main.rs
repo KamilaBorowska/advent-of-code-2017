@@ -20,7 +20,13 @@ named!(
 named!(
     point<Point>,
     ws!(do_parse!(
-        tag!("<") >> x: integer >> tag!(",") >> y: integer >> tag!(",") >> z: integer >> tag!(">")
+        tag!("<")
+            >> x: integer
+            >> tag!(",")
+            >> y: integer
+            >> tag!(",")
+            >> z: integer
+            >> tag!(">")
             >> (Point(x, y, z))
     ))
 );
@@ -28,8 +34,17 @@ named!(
 named!(
     particle<Particle>,
     ws!(do_parse!(
-        tag!("p") >> tag!("=") >> position: point >> tag!(",") >> tag!("v") >> tag!("=")
-            >> velocity: point >> tag!(",") >> tag!("a") >> tag!("=") >> acceleration: point
+        tag!("p")
+            >> tag!("=")
+            >> position: point
+            >> tag!(",")
+            >> tag!("v")
+            >> tag!("=")
+            >> velocity: point
+            >> tag!(",")
+            >> tag!("a")
+            >> tag!("=")
+            >> acceleration: point
             >> (Particle {
                 position,
                 velocity,

@@ -117,8 +117,14 @@ enum Value {
 #[derive(Copy, Clone, Debug)]
 struct Register(u8);
 
-named!(instructions<Vec<Instruction>>, complete!(many0!(instruction)));
-named!(instruction<Instruction>, ws!(alt!(snd | rcv | arithm | jgz)));
+named!(
+    instructions<Vec<Instruction>>,
+    complete!(many0!(instruction))
+);
+named!(
+    instruction<Instruction>,
+    ws!(alt!(snd | rcv | arithm | jgz))
+);
 named!(
     snd<Instruction>,
     ws!(preceded!(tag!("snd"), map!(value, Instruction::Snd)))
@@ -132,11 +138,14 @@ named!(
     ws!(do_parse!(
         Instruction:
             alt!(
-        tag!("set") => { |_| Instruction::Set as fn(_, _) -> _ } |
-        tag!("add") => { |_| Instruction::Add as fn(_, _) -> _ } |
-        tag!("mul") => { |_| Instruction::Mul as fn(_, _) -> _ } |
-        tag!("mod") => { |_| Instruction::Mod as fn(_, _) -> _ }
-    ) >> register: register >> value: value >> (Instruction(register, value))
+                tag!("set") => { |_| Instruction::Set as fn(_, _) -> _ } |
+                tag!("add") => { |_| Instruction::Add as fn(_, _) -> _ } |
+                tag!("mul") => { |_| Instruction::Mul as fn(_, _) -> _ } |
+                tag!("mod") => { |_| Instruction::Mod as fn(_, _) -> _ }
+            )
+            >> register: register
+            >> value: value
+            >> (Instruction(register, value))
     ))
 );
 named!(

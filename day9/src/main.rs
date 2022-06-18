@@ -87,8 +87,8 @@ quick_main!(run);
 
 #[cfg(test)]
 mod test {
-    use {braces, garbage, Group};
     use nom::IResult::Done;
+    use {braces, garbage, Group};
 
     #[test]
     fn test_garbage() {

@@ -5,7 +5,7 @@ extern crate error_chain;
 #[macro_use]
 extern crate nom;
 
-use nom::{digit, be_u8};
+use nom::{be_u8, digit};
 use std::io::{self, Read};
 use std::str;
 
@@ -41,7 +41,10 @@ named!(
 named!(
     exchange<Command>,
     do_parse!(
-        tag!("x") >> first: integer >> tag!("/") >> second: integer
+        tag!("x")
+            >> first: integer
+            >> tag!("/")
+            >> second: integer
             >> (Command::Exchange(first, second))
     )
 );
@@ -49,7 +52,10 @@ named!(
 named!(
     partner<Command>,
     do_parse!(
-        tag!("p") >> first: be_u8 >> tag!("/") >> second: be_u8
+        tag!("p")
+            >> first: be_u8
+            >> tag!("/")
+            >> second: be_u8
             >> (Command::Partner(first, second))
     )
 );
